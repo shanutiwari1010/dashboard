@@ -1,27 +1,15 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable react/prop-types */
+
+
 import Chart from 'react-apexcharts';
 
-const Areagraph = () => {
-  const [studentName, setStudentName] = useState([]);
-  const [studentMarks, setStudentMarks] = useState([]);
-
-  useEffect(() => {
-    const getStudentRecord = async () => {
-      try {
-        const dataReq = await fetch("http://localhost:3000/students");
-        const dataRes = await dataReq.json();
-        const names = dataRes.map(item => item.student_name);
-        const marks = dataRes.map(item => parseFloat(item.student_marks)); // Convert marks to float
-        setStudentName(names);
-        setStudentMarks(marks);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    getStudentRecord();
-  }, []);
+const Areagraph = ({ data, legend = false ,text}) => {
+  
 
   const options = {
+    legend: {
+        show: legend,
+      },
     chart: {
       type: 'area', // Change chart type to area for Areagraph
       height: 250,
@@ -41,9 +29,9 @@ const Areagraph = () => {
       align: 'left',
     },
     xaxis: {
-      categories: studentName,
+     
       title: {
-        text: 'Students',
+        text: text,
       },
     },
     yaxis: {
@@ -68,14 +56,11 @@ const Areagraph = () => {
     },
   };
 
-  const series = [{
-    name: 'Marks',
-    data: studentMarks,
-  }];
+ 
 
   return (
     <div className="size-40 border-4 border-purple-600 rounded-lg m-2 border-#042F2E">
-      <Chart options={options} series={series} type="area" height={180} />
+      <Chart options={options} series={data} type="area" height={180} />
     </div>
   );
 };

@@ -1,70 +1,55 @@
-import { useState, useEffect } from 'react';
-import Chart from 'react-apexcharts';
+/* eslint-disable react/prop-types */
 
-const LineGraph = () => {
-  const [studentName, setStudentName] = useState([]);
-  const [studentMarks, setStudentMarks] = useState([]);
+import Chart from "react-apexcharts";
 
-  useEffect(() => {
-    const getStudentRecord = async () => {
-      try {
-        const dataReq = await fetch("http://localhost:3000/students");
-        const dataRes = await dataReq.json();
-        
-        const names = dataRes.map(item => item.student_name);
-        const marks = dataRes.map(item => item.student_marks);
-        setStudentName(names);
-        setStudentMarks(marks);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    getStudentRecord();
-  }, []);
-
+const LineGraph = ({data,text}) => {
+ 
   const options = {
     chart: {
-      type: 'line',
+      type: "line",
       height: 250,
     },
     dataLabels: {
       enabled: true,
       offsetY: -20,
       style: {
-        fontSize: '12px',
-        colors: ['#333'],
+        fontSize: "12px",
+        colors: ["#333"],
       },
     },
     xaxis: {
-      categories: studentName, // Assuming studentName is an array of student names
+      categories: data.find(item => item.name === "Date").data,
       title: {
-        text: 'Students',
+        text: text,
       },
     },
     yaxis: {
       title: {
-        text: 'Marks',
+        text: "theft",
       },
     },
     grid: {
       show: false,
       xaxis: {
         lines: {
-          show: false
-        }
+          show: false,
+        },
       },
       yaxis: {
         lines: {
-          show: false
-        }
+          show: false,
+        },
       },
-    }
+    },
   };
 
-  const series = [{
-    name: 'Marks',
-    data: studentMarks // Assuming studentMarks is an array of student marks
-  }];
+  const series = [
+    {
+      name: "Theft",
+      data: data.find(item => item.name === "Theft").data,
+    },
+  ];
+
 
   return (
     <div className="size-40 border-4 border-purple-600 rounded-lg m-2">

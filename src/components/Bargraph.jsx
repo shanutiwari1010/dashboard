@@ -1,48 +1,22 @@
-import { useState, useEffect } from 'react';
-import Chart from 'react-apexcharts';
+/* eslint-disable react/prop-types */
 
-const Bargraph = () => {
-  const [reportingData, setReportingData] = useState([]);
-  const [error, setError] = useState(null);
+import Chart from "react-apexcharts";
 
-  useEffect(() => {
-    const getReportingData = async () => {
-      try {
-        const dataReq = await fetch("http://localhost:3000/reporting");
-        if (!dataReq.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        const dataRes = await dataReq.json();
-        setReportingData(dataRes.reporting);
-      } catch (error) {
-        setError(error.message);
-        console.error("Error fetching data:", error);
-      }
-    };
-    getReportingData();
-  }, []);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!reportingData || reportingData.length === 0) {
-    return <div>Loading...</div>;
-  }
+const Bargraph = ({ data, legend = false, categories ,text}) => {
 
   const options = {
     legend: {
-      show:true,
+      show: legend,
     },
     chart: {
-      type: 'bar',
+      type: "bar",
       height: 250,
     },
     plotOptions: {
       bar: {
         horizontal: false,
         dataLabels: {
-          position: 'top',
+          position: "top",
         },
       },
     },
@@ -50,44 +24,39 @@ const Bargraph = () => {
       enabled: true,
       offsetY: -20,
       style: {
-        fontSize: '12px',
-        colors: ['#333'],
+        fontSize: "12px",
+        colors: ["#333"],
       },
     },
     xaxis: {
-      categories: reportingData.map(item => item.days),
+      categories: categories || [],
       title: {
-        text: 'Reporting Days',
+        text: text,
       },
     },
     yaxis: {
       title: {
-        text: 'Reports',
+        text: "Reports",
       },
     },
     grid: {
       show: false,
       xaxis: {
         lines: {
-          show: false
-        }
+          show: false,
+        },
       },
       yaxis: {
         lines: {
-          show: false
-        }
+          show: false,
+        },
       },
-    }
+    },
   };
-
-  const series = [{
-    name: 'Reports',
-    data: reportingData.map(item => parseInt(item.reporting))
-  }];
 
   return (
     <div className="size-40 border-4 border-purple-600 rounded-lg m-2">
-      <Chart options={options} series={series} type="bar" height={180} />
+      <Chart options={options} series={data} type="bar" height={180} />
     </div>
   );
 };
