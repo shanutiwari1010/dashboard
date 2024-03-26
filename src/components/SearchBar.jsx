@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-function SearchBar({onSearch}) {
+function SearchBar({ onSearch }) {
     const [query, setQuery] = useState('');
 
     const handleChange = (event) => {
@@ -19,7 +19,6 @@ function SearchBar({onSearch}) {
                 placeholder="Search..."
                 value={query}
                 onChange={handleChange}
-                
             />
             <button type="submit">Search</button>
         </form>

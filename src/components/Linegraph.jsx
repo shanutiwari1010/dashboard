@@ -18,7 +18,7 @@ const LineGraph = ({data,text}) => {
       },
     },
     xaxis: {
-      categories: data.find(item => item.name === "Date").data,
+      categories : data.find(item => item.name === "Date").data,
       title: {
         text: text,
       },

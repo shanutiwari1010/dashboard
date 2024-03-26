@@ -1,10 +1,82 @@
 {
- 
-    "reporting" : [
-      {"reporting" : "" , "days":"1"},
-      {"reporting" : "" , "days":"7"},
-      {"reporting" : "" , "days":"30"}
-
-  
-    ]
+  "data": {
+    "reports": [
+      {
+        "name": "1 day",
+        "data": [35, 42, 48]
+      },
+      {
+        "name": "7 days",
+        "data": [25, 38, 44]
+      },
+      {
+        "name": "30 days",
+        "data": [20, 32, 40]
+      }
+    ],
+    "theft": [
+      {
+        "name": "Theft",
+        "data": [75, 42, 48]
+      },
+      {
+        "name": "Date",
+        "data": ["2024-03-15", "2024-03-16", "2024-03-17"]
+      }
+    ],
+    "deviceCount": [
+      {
+        "name": "device",
+        "data": [10, 5, 8]
+      },
+      {
+        "name": "customer",
+        "data": ["cus1", "cus2", "cu3"]
+      }
+    ],
+    "vehicleCount": [
+      {
+        "name": "vehicle",
+        "data": [4, 2, 6]
+      },
+      {
+        "name": "customer",
+        "data": ["cus1", "cus2", "cu3"]
+      }
+    ],
+    "deviceInfo": [
+        {
+          "name": "new",
+          "data": [35, 42, 48]
+        },
+        {
+          "name": "installed",
+          "data": [25, 38, 44]
+        },
+        {
+          "name": "active",
+          "data": [20, 32, 40]
+        }
+      ],
+      "deviceBattery":[
+        {
+            "name": "deviceBattery",
+            "data": [10, 90, 48]
+          },
+          {
+            "name": "Date",
+            "data": ["2024-03-15", "2024-03-16", "2024-03-17"]
+          }
+      ],
+      "vehicleBattery":[
+        {
+            "name": "vehicleBattery",
+            "data": [50, 10, 30]
+          },
+          {
+            "name": "Date",
+            "data": ["2024-03-15", "2024-03-16", "2024-03-17"]
+          }
+      ]
   }
+}
