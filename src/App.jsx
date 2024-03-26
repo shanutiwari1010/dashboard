@@ -62,18 +62,16 @@ function App() {
         />
         <Areagraph
           data={reportingData.deviceInfo}
-          legend={false}
+          legend={true}
           text={"new/installed/active/total devices"}
         />
       </div>
       <Explorer />
       <MapView />
-
-      {/* <div className='flex m-y-4 border-b-2 border-sky-700'>
-    <Areagraph/>
-    <Areagraph/>
-    <Bargraph/>
-    </div> */}
+      <div className="flex">
+        <LineGraph data={reportingData.theft} text={"device bettry"} />
+        <LineGraph data={reportingData.theft} text={"vehicle bettry"} />
+      </div>
     </div>
   );
 }
