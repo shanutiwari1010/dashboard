@@ -8,8 +8,8 @@ function SelectStatus() {
     };
 
     return (
-        <div className='flex gap-2'>
-            <label htmlFor="select">Select Option:</label>
+        <div className='flex gap-2 '>
+            <label htmlFor="select">Status</label>
             <select id='select' value={select} onChange={handleChange} className='bg-black'>
                 <option value="active/in">active/in</option>
                 <option value="theft/Theft">theft/Theft</option>
