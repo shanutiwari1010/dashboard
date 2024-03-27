@@ -5,7 +5,8 @@ import Chart from "react-apexcharts";
 const Bargraph = ({ data, legend, categories, text }) => {
   const options = {
     legend: {
-      show: legend ? legend : true,
+      // show: legend ? legend : true,
+      show: legend,
       fontSize: "10px",
       fontWeight: "bold",
 
