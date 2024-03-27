@@ -42,23 +42,23 @@ function App() {
       <div className="flex justify-evenly">
         <Bargraph
           data={reportingData.reports}
-          legend={false}
+          legend={true}
           categories={["1 day", "7 days", "30 days"]}
-          text={"reporting/1/7/30 days"}
+          text={reportingData.reports[3].text}
         />
 
         <LineGraph data={reportingData.theft} text={"in theft/date"} />
         <Bargraph
           data={reportingData.deviceCount}
-          legend={false}
+          legend={true}
           categories={["cus1", "cus2", "cus3"]}
-          text={"device/customer"}
+          text={reportingData.deviceCount[2].text}
         />
         <Bargraph
           data={reportingData.vehicleCount}
-          legend={false}
+          legend={true}
           categories={["cus1", "cus2", "cus3"]}
-          text={"vehicle/customer"}
+          text={reportingData.vehicleCount[2].text}
         />
         <Areagraph
           data={reportingData.deviceInfo}
