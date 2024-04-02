@@ -3,6 +3,7 @@
 import Chart from "react-apexcharts";
 
 const LineGraph = ({ data, text }) => {
+  console.log(data,"line graph")
   const options = {
     chart: {
       type: "line",
@@ -33,7 +34,7 @@ const LineGraph = ({ data, text }) => {
       enabled: false,
     },
     xaxis: {
-      categories: data.find((item) => item.name === "Date").data,
+      categories: data.find((item) => item.name === "Date"),
       title: {
         text: text,
         offsetY: 5,

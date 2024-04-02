@@ -28,6 +28,7 @@ function App() {
     getReportingData();
   }, []);
 
+  console.log(reportingData , "data")
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -68,8 +69,9 @@ function App() {
       </div>
       <Explorer />
       <MapView />
+      {JSON.stringify(reportingData.deviceBattery,null,2)}
       <div className="flex">
-        <LineGraph data={reportingData.theft} text={"device bettry"} />
+        <LineGraph data={reportingData.deviceBattery} text={"device bettry"} />
         <LineGraph data={reportingData.theft} text={"vehicle bettry"} />
       </div>
     </div>
