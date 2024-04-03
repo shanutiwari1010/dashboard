@@ -28,7 +28,7 @@ function App() {
     getReportingData();
   }, []);
 
-  console.log(reportingData , "data")
+  console.log(reportingData, "data");
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -48,7 +48,11 @@ function App() {
           text={reportingData.reports[3].text}
         />
 
-        <LineGraph data={reportingData.theft} text={"in theft/date"} />
+        <LineGraph
+          data={reportingData.theft}
+          type="Theft"
+          text={"in theft/date"}
+        />
         <Bargraph
           data={reportingData.deviceCount}
           legend={true}
@@ -69,10 +73,17 @@ function App() {
       </div>
       <Explorer />
       <MapView />
-      {JSON.stringify(reportingData.deviceBattery,null,2)}
       <div className="flex">
-        <LineGraph data={reportingData.deviceBattery} text={"device bettry"} />
-        <LineGraph data={reportingData.theft} text={"vehicle bettry"} />
+        <LineGraph
+          data={reportingData.deviceBattery}
+          type="deviceBattery"
+          text={"device bettry"}
+        />
+        <LineGraph
+          data={reportingData.vehicleBattery}
+          type="vehicleBattery"
+          text={"vehicle bettry"}
+        />
       </div>
     </div>
   );

@@ -2,8 +2,7 @@
 
 import Chart from "react-apexcharts";
 
-const LineGraph = ({ data, text }) => {
-  console.log(data,"line graph")
+const LineGraph = ({ data, text, type }) => {
   const options = {
     chart: {
       type: "line",
@@ -34,7 +33,7 @@ const LineGraph = ({ data, text }) => {
       enabled: false,
     },
     xaxis: {
-      categories: data.find((item) => item.name === "Date"),
+      categories: data[1].name === "Date" ? data[1].data : null,
       title: {
         text: text,
         offsetY: 5,
@@ -105,10 +104,12 @@ const LineGraph = ({ data, text }) => {
 
   const series = [
     {
-      name: "Theft",
-      data: data.find((item) => item.name === "Theft").data,
+      name: type,
+      data: data.find((item) => item.name === type).data,
     },
   ];
+
+  console.log(series, "series", series.name);
 
   return (
     <div className="size-52 ring-4 ring-purple-500 rounded-xl my-8">
