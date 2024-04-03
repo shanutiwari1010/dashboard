@@ -73,7 +73,8 @@ function App() {
       </div>
       <Explorer />
       <MapView />
-      <div className="flex">
+
+      <div className="flex justify-evenly items-center">
         <LineGraph
           data={reportingData.deviceBattery}
           type="deviceBattery"
@@ -84,6 +85,11 @@ function App() {
           type="vehicleBattery"
           text={"vehicle bettry"}
         />
+
+        <Bargraph />
+        <div className="text-white text-3xl max-w-72 ">
+          Device and Vehicle details(SN, IMEI, VIN , Owner etc)
+        </div>
       </div>
     </div>
   );
