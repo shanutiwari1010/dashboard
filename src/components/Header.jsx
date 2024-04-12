@@ -3,7 +3,7 @@
 function Header() {
   return (
       <nav className="navbar text-white border-y-2 border-sky-700">
-       <ul className='flex  justify-center gap-x-44 py-5 pl-32 font-bold text-xl m-0 font-thin'>
+       <ul className='flex  justify-center gap-x-44 py-5 pl-32 font-bold text-xl m-0 '>
          <li>
             <a href="#">InTheft</a>
         </li>
