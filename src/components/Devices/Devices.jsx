@@ -52,6 +52,12 @@ const DeviceForm = () => {
     defaultValues: {
       device_model: "",
       serial_number: "",
+      imei_number: "",
+      iccid_number: "",
+      firmware: "",
+      sales_channel: "",
+      manufacturer_id: "",
+      description: "",
     },
     resolver: zodResolver(FormSchema),
   });
@@ -62,7 +68,7 @@ const DeviceForm = () => {
 
   return (
     <div className="h-screen flex justify-center items-center ">
-      <div className="rounded-md bg-white p-8 ">
+      <div className="rounded-md bg-white px-12 py-4">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleDeviceForm)}
@@ -156,15 +162,12 @@ const DeviceForm = () => {
               control={form.control}
               name="manufacturer_id"
               render={({ field }) => (
-                <FormItem>
+                <FormItem {...field}>
                   <FormLabel>Manufacturer ID</FormLabel>
                   <FormControl>
                     <Select>
                       <SelectTrigger className="text-gray-500">
-                        <SelectValue
-                          placeholder="Select an Option"
-                          {...field}
-                        />
+                        <SelectValue placeholder="Select an Option" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="one">1</SelectItem>

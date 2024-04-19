@@ -40,15 +40,19 @@ const FormSchema = z.object({
     .max(3, {
       message: "Customer Access Number should not be exceed 3 digits.",
     }),
-  country_id: z.string().min(1, { message: "Manufacturer ID is required" }),
+  country_id: z.string(),
 });
 
 const MyForm = () => {
   const form = useForm({
     defaultValues: {
       customer_name: "",
-      email: "",
+      customer_email: "",
+      organization_name: "",
+      organization_email: "",
       contact: "",
+      customer_access_number: "",
+      country_id: "",
     },
     resolver: zodResolver(FormSchema),
   });
@@ -164,23 +168,19 @@ const MyForm = () => {
               control={form.control}
               name="country_id"
               render={({ field }) => (
-                <FormItem>
+                <FormItem {...field}>
                   <FormLabel>Country ID</FormLabel>
                   <FormControl>
-                    <Select>
+                    <Select >
                       <SelectTrigger className="text-gray-500">
-                        <SelectValue
-                          placeholder="Select an Option"
-                          {...field}
-                          type="number"
-                        />
+                        <SelectValue placeholder="Select an Option" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="one">1</SelectItem>
-                        <SelectItem value="two">2</SelectItem>
-                        <SelectItem value="three">3</SelectItem>
-                        <SelectItem value="four">4</SelectItem>
-                        <SelectItem value="five">5</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                        <SelectItem value="4">4</SelectItem>
+                        <SelectItem value="5">5</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormControl>

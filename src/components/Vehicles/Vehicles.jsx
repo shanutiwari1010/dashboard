@@ -23,16 +23,22 @@ import { Button } from "../ui/button";
 
 const FormSchema = z.object({
   vehicle_name: z.string().min(1, { message: "Vehicle Name is required" }),
+  licence_plate: z
+    .string()
+    .min(1, { message: "Licence Plate Number is required" }),
+  vin: z.string().min(1, { message: "VIN Number is required" }),
   vehicle_id: z.string(),
-  licence_plate:z.string().min(1, { message: "Licence Plate Number is required" }),
-  vin:z.string().min(1, { message: "VIN Number is required" }),
+  country_id: z.string(),
 });
 
 const VehicleForm = () => {
   const form = useForm({
     defaultValues: {
-      device_model: "",
-      serial_number: "",
+      vehicle_name: "",
+      vehicle_id: "",
+      licence_plate: "",
+      vin: "",
+      country_id: "",
     },
     resolver: zodResolver(FormSchema),
   });
@@ -95,22 +101,19 @@ const VehicleForm = () => {
               control={form.control}
               name="vehicle_id"
               render={({ field }) => (
-                <FormItem>
+                <FormItem {...field}>
                   <FormLabel>Vehicle ID</FormLabel>
                   <FormControl>
                     <Select>
                       <SelectTrigger className="text-gray-500">
-                        <SelectValue
-                          placeholder="Select an Option"
-                          {...field}
-                        />
+                        <SelectValue placeholder="Select an Option" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="one">1</SelectItem>
-                        <SelectItem value="two">2</SelectItem>
-                        <SelectItem value="three">3</SelectItem>
-                        <SelectItem value="four">4</SelectItem>
-                        <SelectItem value="five">5</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                        <SelectItem value="4">4</SelectItem>
+                        <SelectItem value="5">5</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormControl>
@@ -123,23 +126,22 @@ const VehicleForm = () => {
               control={form.control}
               name="country_id"
               render={({ field }) => (
-                <FormItem>
+                <FormItem {...field}>
                   <FormLabel>Country ID</FormLabel>
                   <FormControl>
                     <Select>
                       <SelectTrigger className="text-gray-500">
                         <SelectValue
                           placeholder="Select an Option"
-                          {...field}
                           type="number"
                         />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="one">1</SelectItem>
-                        <SelectItem value="two">2</SelectItem>
-                        <SelectItem value="three">3</SelectItem>
-                        <SelectItem value="four">4</SelectItem>
-                        <SelectItem value="five">5</SelectItem>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                        <SelectItem value="4">4</SelectItem>
+                        <SelectItem value="5">5</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormControl>
