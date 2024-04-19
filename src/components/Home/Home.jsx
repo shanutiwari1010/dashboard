@@ -1,6 +1,4 @@
-// import "./App.css";
-import Header from "../Header";
-import Bargraph from "../Bargraph"
+import Bargraph from "../Bargraph";
 import LineGraph from "../Linegraph";
 import Areagraph from "../Areagraph";
 import Explorer from "../Explorer";
@@ -15,7 +13,7 @@ function Home() {
     const getReportingData = async () => {
       try {
         const dataReq = await fetch("http://localhost:3000/data");
-        if (!dataReq.ok) { 
+        if (!dataReq.ok) {
           throw new Error("Failed to fetch data");
         }
         const dataRes = await dataReq.json();
@@ -39,7 +37,6 @@ function Home() {
 
   return (
     <div className=" border-x-2 border-sky-700">
-      <Header />
       <div className="flex justify-evenly">
         <Bargraph
           data={reportingData.reports}
@@ -93,7 +90,6 @@ function Home() {
       </div>
     </div>
   );
-  }
-  
-  export default Home;
-  
+}
+
+export default Home;
