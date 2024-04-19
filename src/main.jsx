@@ -12,7 +12,7 @@ import {
 import Profile from "./components/Profile/Profile.jsx";
 import Intheft from "./components/InTheft/InTheft.jsx";
 import Devices from "./components/Devices/Devices.jsx";
-import Vehicle from "./components/Vehicles/Vehicles.jsx";
+import Vehicles from "./components/Vehicles/Vehicles";
 import Mycustomer from "./components/MyCustomer/Mycustomer.jsx";
 import Home from "./components/Home/Home.jsx";
 
@@ -23,7 +23,7 @@ const router = createBrowserRouter(
       <Route path="intheft" element={<Intheft />} />
       <Route path="devices" element={<Devices />} />
       <Route path="profile" element={<Profile />} />
-      <Route path="vehicle" element={<Vehicle />} />
+      <Route path="vehicles" element={<Vehicles/>} />
       <Route path="mycustomer" element={<Mycustomer />} />
     </Route>
   )
