@@ -63,7 +63,7 @@ const MyForm = () => {
 
   return (
     <div className="h-screen flex justify-center items-center">
-      <div className="rounded-md bg-white p-8 -mt-20">
+      <div className="rounded-md bg-white px-12 py-4 ">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleCustomerForm)}
