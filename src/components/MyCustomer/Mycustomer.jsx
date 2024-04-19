@@ -9,17 +9,38 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
 const FormSchema = z.object({
   customer_name: z.string().min(1, { message: "Customer name is required" }),
-  email: z.string().email(),
+  customer_email: z.string().email(),
+  organization_name: z
+    .string()
+    .min(1, { message: "Organization name is required" }),
+  organization_email: z.string().email(),
   contact: z
     .string()
     .min(1, { message: "Contact number is required" })
     .min(10, { message: "Contact number must be of 10 digits" })
     .max(10, { message: "Contact number should not be exceed 10 digits." }),
+  customer_access_number: z
+    .string()
+    .min(1, { message: "Customer Access Number is required" })
+    .min(3, { message: "Customer Access Number must be of 3 digits" })
+    .max(3, {
+      message: "Customer Access Number should not be exceed 3 digits.",
+    }),
+  country_id: z.string().min(1, { message: "Manufacturer ID is required" }),
 });
 
 const MyForm = () => {
@@ -59,10 +80,41 @@ const MyForm = () => {
             />
             <FormField
               control={form.control}
-              name="email"
+              name="customer_email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Customer Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your email address"
+                      type="email"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="organization_name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Organization Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="organization_email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Organization Email</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Enter your email address"
@@ -91,6 +143,51 @@ const MyForm = () => {
                 </FormItem>
               )}
             />
+
+            <FormField
+              control={form.control}
+              name="customer_access_number"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Customer Access Number</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your Customer Access Number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="country_id"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Country ID</FormLabel>
+                  <FormControl>
+                    <Select>
+                      <SelectTrigger className="text-gray-500">
+                        <SelectValue
+                          placeholder="Select an Option"
+                          {...field}
+                          type="number"
+                        />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="one">1</SelectItem>
+                        <SelectItem value="two">2</SelectItem>
+                        <SelectItem value="three">3</SelectItem>
+                        <SelectItem value="four">4</SelectItem>
+                        <SelectItem value="five">5</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            ></FormField>
             <Button className="w-full" type="submit">
               Submit
             </Button>
@@ -102,48 +199,3 @@ const MyForm = () => {
 };
 
 export default MyForm;
-
-// // import { useState } from "react";
-// // import { useForm } from "react-hook-form";
-
-// function MyCustomer() {
-//   // const { register, handleSubmit, errors } = useForm();
-//   // const [customerInfo, setCustomerInfo] = useState;
-//   // const onSubmit = (data) => {
-//   //   setCustomerInfo(data);
-//   //   console.log(data);
-//   // };
-//   return (
-//     <div className=" flex justify-center">
-//       {/* <pre>{JSON.stringify(customerInfo,undefined,2)}</pre> */}
-//       <form
-//         action=""
-//         className="flex flex-col bg-white text-black max-w-screen-md p-5 gap-8"
-//       >
-//         <h1 className="text-2xl">Customer Form</h1>
-//         <div className="w-full">
-//           <div className="flex flex-col w-full">
-//             <label htmlFor="">Customer Name</label>
-//             <textareaw
-//               name="customername"
-//               id=""
-//               placeholder="Customer Name"
-//               // ref={register}
-//             ></textarea>
-//             <label htmlFor="">Customer Email</label>
-//             <textarea
-//               name="email"
-//               id=""
-//               placeholder="Customer Email"
-//             ></textarea>
-//             <label htmlFor=""> Contact No. </label>
-//             <textarea name="contact" id="" placeholder="Contact No."></textarea>
-//           </div>
-//           <button></button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// }
-
-// export default MyCustomer;
