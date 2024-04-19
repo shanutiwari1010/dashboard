@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
-    <header className=" shadow sticky z-50 m-4 top-0 ">
-      <nav className="bg-black border-sky-700 px-4 lg:px-6 py-2.5 flex justify-center shadow-md">
+    <header className=" shadow sticky z-50  top-0 p-3 bg-black">
+      <nav className="px-4 lg:px-6 py-2.5 flex justify-center shadow-md">
         <div
           className=" hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
           id="mobile-menu-2"
@@ -16,7 +16,7 @@ function Header() {
                   `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 
                                         ${
                                           isActive
-                                            ? "text-blue-700"
+                                            ? "text-purple-700"
                                             : "text-white"
                                         } lg:hover:bg-transparent lg:border-0 hover:text-purple-700 lg:p-0`
                 }
