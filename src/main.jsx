@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 // import App from './App.jsx'
 import "./index.css";
-import Layout from "./Layout.jsx";
+import Layout from "./layout";
 import {
   Route,
   RouterProvider,
@@ -15,6 +15,8 @@ import Devices from "./components/Devices/Devices.jsx";
 import Vehicles from "./components/Vehicles/Vehicles";
 import Mycustomer from "./components/MyCustomer/Mycustomer.jsx";
 import Home from "./components/Home/Home.jsx";
+import { LoginForm } from "./components/Login/LoginForm";
+import Dashboard from "./pages/dashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,8 +25,10 @@ const router = createBrowserRouter(
       <Route path="intheft" element={<Intheft />} />
       <Route path="devices" element={<Devices />} />
       <Route path="profile" element={<Profile />} />
-      <Route path="vehicles" element={<Vehicles/>} />
+      <Route path="vehicles" element={<Vehicles />} />
       <Route path="mycustomer" element={<Mycustomer />} />
+      <Route path="login" element={<LoginForm />} />
+      <Route path="dashboard" element={<Dashboard />} />
     </Route>
   )
 );
