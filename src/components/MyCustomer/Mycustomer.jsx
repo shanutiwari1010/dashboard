@@ -171,7 +171,7 @@ const MyForm = () => {
                 <FormItem {...field}>
                   <FormLabel>Country ID</FormLabel>
                   <FormControl>
-                    <Select >
+                    <Select>
                       <SelectTrigger className="text-gray-500">
                         <SelectValue placeholder="Select an Option" />
                       </SelectTrigger>
